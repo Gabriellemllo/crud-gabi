@@ -1,20 +1,44 @@
-# crud
- CRUD feito com meus alunos.
+Para deixar o texto com uma formatação mais adequada no `README.md`, você pode usar blocos de código no estilo Markdown. Vou formatar novamente para você:
 
-// Inicializa um novo projeto Node.js
+```markdown
+# Passos para Configuração do Projeto Node.js
+
+## 1. Inicializar um novo projeto Node.js
+```bash
 npm init -y
+```
 
-// Instala o express, um framework para Node.js. lidar com solicitações HTTP e criar rotas.
+## 2. Instalar o Express
+Instala o Express, um framework para Node.js que lida com solicitações HTTP e cria rotas:
+```bash
 npm i express
+```
 
-// Instala o mysql2, um módulo do Node.js para conexão com MySQL
+## 3. Instalar o MySQL2
+Instala o mysql2, um módulo do Node.js para conexão com MySQL:
+```bash
 npm i mysql2
+```
 
-// Instala o nodemon, uma ferramenta que reinicia automaticamente a aplicação do node quando detecta alterações de arquivo no diretório
+## 4. Instalar o Nodemon
+Instala o nodemon, uma ferramenta que reinicia automaticamente a aplicação do Node quando detecta alterações de arquivo no diretório:
+```bash
 npm i nodemon
+```
 
-// Instala o cors, uma maneira de permitir que um site acesse recursos de outro site, mesmo que estejam em domínios diferentes. Isso é útil quando você tem, por exemplo, um site que precisa acessar uma API que está em um domínio diferente
+## 5. Instalar o CORS
+Instala o CORS, uma maneira de permitir que um site acesse recursos de outro site, mesmo que estejam em domínios diferentes. Isso é útil, por exemplo, quando você tem um site que precisa acessar uma API em um domínio diferente:
+```bash
 npm i cors
+```
 
-// Adiciona um script 'dev' ao package.json que inicia o servidor com o nodemon
-"dev": "nodemon src/server.js"
+## 6. Adicionar um script 'dev' ao package.json
+Adiciona um script 'dev' ao `package.json` que inicia o servidor com o nodemon:
+```json
+"scripts": {
+  "dev": "nodemon src/server.js"
+}
+```
+```
+
+Essa versão está mais organizada, com os comandos em blocos de código separados e títulos para cada seção. Isso deve ajudar a melhorar a leitura no `README.md` do seu repositório.
