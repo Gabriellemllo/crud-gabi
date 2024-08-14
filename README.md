@@ -1,7 +1,6 @@
 # Passos para Configuração do Projeto Node.js
 ## 1. Inicializar um novo projeto Node.js
 
-```markdown
 ```bash
 npm init -y
 ```
