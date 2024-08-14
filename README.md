@@ -40,5 +40,3 @@ Adiciona um script 'dev' ao `package.json` que inicia o servidor com o nodemon:
 }
 ```
 ```
-
-Essa versão está mais organizada, com os comandos em blocos de código separados e títulos para cada seção. Isso deve ajudar a melhorar a leitura no `README.md` do seu repositório.
