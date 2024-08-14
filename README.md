@@ -1,3 +1,13 @@
+# Tratar erro do MySql
+Ao tentar fazer a conexão com o banco pela primeira vez, pode ocorrer um erro. Nesse caso, abre o gerenciador de banco de dados
+E execute a seguinte linha:
+
+ALTER USER 'seuUsuario'@'localhost' IDENTIFIED WITH mysql_native_password BY 'suaSenha';
+
+FLUSH PRIVILEGES;![image](https://github.com/user-attachments/assets/72bd595a-86a8-419c-9dcd-843ee0f73e97)
+
+
+
 # Passos para Configuração do Projeto Node.js
 ## 1. Inicializar um novo projeto Node.js
 
