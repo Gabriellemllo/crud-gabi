@@ -4,7 +4,7 @@ E execute a seguinte linha:
 
 ALTER USER 'seuUsuario'@'localhost' IDENTIFIED WITH mysql_native_password BY 'suaSenha';
 
-FLUSH PRIVILEGES;![image](https://github.com/user-attachments/assets/72bd595a-86a8-419c-9dcd-843ee0f73e97)
+FLUSH PRIVILEGES;
 
 
 
