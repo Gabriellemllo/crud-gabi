@@ -1,4 +1,4 @@
-Para deixar o texto com uma formatação mais adequada no `README.md`, você pode usar blocos de código no estilo Markdown. Vou formatar novamente para você:
+
 
 ```markdown
 # Passos para Configuração do Projeto Node.js
