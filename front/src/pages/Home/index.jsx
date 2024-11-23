@@ -1,20 +1,26 @@
 import { useState, useEffect } from "react";
 import api from "../../api";
+// linkar o css.
 import "./styles.css";
 
 function Home() {
+    //Estado para guardar o título do livro
     const [title, setTitle] = useState('');
+    // Estado para guardar o autor do livro
     const [author, setAuthor] = useState('');
+    // // Estado para guardar a lista de livros
     const [books, setBooks] = useState([]);
-
-    const [editing, setEditing] = useState(null); // Para controlar a edição de um item
+    // Para controlar a edição de um item
+    const [editing, setEditing] = useState(null); 
 
     useEffect(() => {
-        fetchBooks(); // Busca os livros ao montar o componente
+        // Busca os livros ao montar o componente
+        fetchBooks(); 
     }, []);
 
     // Função para buscar livros
     const fetchBooks = async () => {
+        // o If & Else de uma Api ( previnir erro)
         try {
             const response = await api.get('/');
             setBooks(response.data);
@@ -35,8 +41,8 @@ function Home() {
                     title,
                     author,
                 });
-                setEditing(null); // Limpa a edição após atualizar
-
+                // Limpa a edição após atualizar
+                setEditing(null); 
             } else {
                 // Adiciona um novo item
                 await api.post('/insertItem', {
@@ -65,7 +71,8 @@ function Home() {
     const handleDelete = async (id) => {
         try {
             await api.delete(`/deleteItem/${id}`);
-            fetchBooks(); // Atualiza a lista de livros após exclusão
+            // Atualiza a lista de livros após exclusão
+            fetchBooks(); 
         } catch (error) {
             console.error('Erro ao excluir dados: ', error);
         }
@@ -100,10 +107,14 @@ function Home() {
                 <tbody>
                     {books.map((book) => (
                         <tr key={book.id}>
+                            //Exibe o ID do livro
                             <td>{book.id}</td>
+                            // Exibe o título do livro
                             <td>{book.title}</td>
+                            // Exibe o autor do livro
                             <td>{book.author}</td>
                             <td>
+                                // Botão para ativar o modo de edição
                                 <button onClick={() => handleEdit(book)}>Editar</button>
                                 <button onClick={() => handleDelete(book.id)}>Excluir</button>
                             </td>
@@ -115,4 +126,5 @@ function Home() {
     );
 }
 
+//Exporta o componente para ser usado em outras partes da aplicação
 export default Home;

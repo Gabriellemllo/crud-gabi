@@ -1,72 +1,61 @@
-// Esse eu não vou comentar o Senhor Comentou.
-const express = require('express'); // Importa o framework Express para criação do servidor
+const express = require('express'); // Importa o Express para criar o servidor
 
-// Middleware é uma função que tem acesso ao objeto de requisição (req), ao objeto de resposta (res) e à próxima função de middleware na pilha de execução do Express.
-// Ele é usado para permitir que aplicações web que estão rodando em um domínio (origem) acessem recursos em outro domínio.
-const cors = require('cors'); // Importa o middleware para lidar com CORS (Cross-Origin Resource Sharing)
+const cors = require('cors'); // Importa o middleware para gerenciar permissões de origem cruzada (CORS)
 
 const { getAllItems, insertItem, updateItem, deleteItem } = require('./allItems');
- // Importa as funções para manipulação de dados
+// Importa as funções para operações de banco de dados
 
-const app = express(); // Cria uma instância do aplicativo Express
-app.use(express.json()); // Middleware para analisar requisições com corpo em JSON
-app.use(cors()); // Middleware para permitir requisições de diferentes origens
+const app = express(); // Inicializa o aplicativo Express
+app.use(express.json()); // Middleware para processar requisições com JSON
+app.use(cors()); // Ativa o CORS no servidor
 
-const PORT = 3003; // Define a porta em que o servidor irá escutar
+const PORT = 3003; // Define a porta do servidor
 
-// Inicia o servidor na porta definida e imprime uma mensagem no console
+// Inicia o servidor e exibe a mensagem no console
 app.listen(PORT, () => {
     console.log(`Funcionando na porta ${PORT}`);
 });
 
-// Rota para buscar todos os itens
+// Rota para obter todos os itens
 app.get('/', async (req, res) => {
     try {
-        const items = await getAllItems(); // Chama a função para buscar todos os itens
-        res.status(200).json(items); // Envia os itens como resposta com status 200 (OK)
+        const items = await getAllItems(); // Busca itens do banco
+        res.status(200).json(items); // Retorna os itens com status 200
     } catch (error) {
-        res.status(500).json({ error: error.message }); // Envia uma mensagem de erro com status 500 (Erro interno do servidor)
+        res.status(500).json({ error: error.message }); // Retorna erro com status 500
     }
 });
 
 // Rota para inserir um item
 app.post('/insertItem', async (req, res) => {
-    const { title, author } = req.body; // Extrai título e autor do corpo da requisição
+    const { title, author } = req.body; // Obtém dados da requisição
     try {
-        const result = await insertItem(title, author); // Chama a função para inserir um item
-        res.status(201).json(result); // Envia o resultado da inserção como resposta com status 201 (Criado)
+        const result = await insertItem(title, author); // Insere item no banco
+        res.status(201).json(result); // Retorna o resultado com status 201
     } catch (error) {
-        res.status(500).json({ error: error.message }); // Envia uma mensagem de erro com status 500 (Erro interno do servidor)
+        res.status(500).json({ error: error.message }); // Retorna erro com status 500
     }
 });
-
 
 // Rota para atualizar um item
 app.put('/updateItem/:id', async (req, res) => {
-    const { id } = req.params; // Extrai o ID da URL
-    const { title, author } = req.body; // Extrai os dados do corpo da requisição
-
+    const { id } = req.params; // Obtém ID da URL
+    const { title, author } = req.body; // Obtém dados da requisição
     try {
-        // Função para atualizar o item no banco de dados
-        const result = await updateItem(id, title, author);
-        res.status(200).json(result); // Envia o resultado da atualização
+        const result = await updateItem(id, title, author); // Atualiza item no banco
+        res.status(200).json(result); // Retorna o resultado com status 200
     } catch (error) {
-        res.status(500).json({ error: error.message }); // Envia uma mensagem de erro
+        res.status(500).json({ error: error.message }); // Retorna erro com status 500
     }
 });
-
 
 // Rota para excluir um item
 app.delete('/deleteItem/:id', async (req, res) => {
-    const { id } = req.params; // Extrai o ID da URL
-
+    const { id } = req.params; // Obtém ID da URL
     try {
-        // Função para excluir o item do banco de dados
-        const result = await deleteItem(id);
-        res.status(200).json(result); // Envia o resultado da exclusão
+        const result = await deleteItem(id); // Remove item do banco
+        res.status(200).json(result); // Retorna o resultado com status 200
     } catch (error) {
-        res.status(500).json({ error: error.message }); // Envia uma mensagem de erro
+        res.status(500).json({ error: error.message }); // Retorna erro com status 500
     }
 });
-
-
