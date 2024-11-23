@@ -1,3 +1,4 @@
+// Esse eu não vou comentar o Senhor Comentou.
 const express = require('express'); // Importa o framework Express para criação do servidor
 
 // Middleware é uma função que tem acesso ao objeto de requisição (req), ao objeto de resposta (res) e à próxima função de middleware na pilha de execução do Express.
